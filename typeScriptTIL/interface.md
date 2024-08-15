@@ -137,4 +137,92 @@ a(33) // true
 
 ## class 정의
 
-#### implements
+### implements
+
+예시
+
+- constructor : 클래스에서 객체를 **생성**할 때 호출되는 특수한 메서드
+
+```
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
+}
+
+class Bmw implements Car {
+  // 이걸 무조건 작성 해줘야 함
+  color;
+
+  // color를 받아 객체를 생성
+  constructor(c: string) {
+    this.color = c;
+  }
+  wheels: 4;
+  start(): void {
+    console.log("go...");
+  }
+}
+
+const b = new Bmw("green");
+
+// 속성 출력
+console.log(b);
+// Bmw { color: 'green', wheels: 4 }
+
+// 메서드 출력
+console.log(b.start());
+// "go..."
+```
+
+---
+
+## extends
+
+예제 1
+
+```
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
+}
+
+// extends !!!!
+interface Benz extends Car {
+  door: number;
+  stop(): void;
+}
+
+// 모두 갖ㅅ 지정 해주어야 함
+const benz: Benz = {
+  door: 5,
+  stop() {
+    console.log("stop");
+  },
+  color: "black",
+  wheels: 4,
+  start() {
+    console.log("start...");
+  },
+};
+```
+
+**여러개 가능**
+예제 2
+
+```
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
+}
+
+interface Toy {
+  name: string;
+}
+
+interface ToyCar extends Car, Toy {
+  price: number;
+}
+```

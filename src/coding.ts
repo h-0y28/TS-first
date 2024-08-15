@@ -1,42 +1,48 @@
-// interface User {
-//   name: string;
-//   age: number;
-//   gender?: string;
-// }
+// implements
 
-// let user: User = {
-//   name: "jack",
-//   age: 19,
-// };
-
-// user.gender = "male";
-
-// type Score = "A" | "B" | "C" | "F";
-
-// interface User {
-//   [grade: number]: Score;
-// }
-
-// let user: User = {
-//   1: "A",
-//   2: "B",
-// };
-
-interface Add {
-  // (인자값, 리턴 값) : 반환 값
-  (num1: number, num2: number): number;
+interface Car {
+  color: string;
+  wheels: number;
+  start(): void;
 }
 
-const add: Add = function (x, y) {
-  return x + y;
-};
-
-add(10, 20); // 30
-
-interface IsAdult {
-  (age: number): boolean;
+interface Toy {
+  name: string;
 }
 
-const a: IsAdult = (age) => {
-  return age > 19;
-};
+interface ToyCar extends Car, Toy {
+  price: number;
+}
+
+// interface Benz extends Car {
+//   door: number;
+//   stop(): void;
+// }
+
+// const benz: Benz = {
+//   door: 5,
+//   stop() {
+//     console.log("stop");
+//   },
+//   color: "black",
+//   wheels: 4,
+//   start() {
+//     console.log("start...");
+//   },
+// };
+
+class Bmw implements Car {
+  color;
+  constructor(c: string) {
+    this.color = c;
+  }
+  wheels: 4;
+  start(): void {
+    console.log("go...");
+  }
+}
+
+const b = new Bmw("green");
+
+console.log(b);
+console.log(b.start());
