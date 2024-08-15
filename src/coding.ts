@@ -1,32 +1,42 @@
-let b: [string, number];
+// interface User {
+//   name: string;
+//   age: number;
+//   gender?: string;
+// }
 
-b = ["z", 1];
+// let user: User = {
+//   name: "jack",
+//   age: 19,
+// };
 
-b[0].toLowerCase();
-// b[1].toLowerCase();
+// user.gender = "male";
 
-// void never
+// type Score = "A" | "B" | "C" | "F";
 
-function sayHello(): void {
-  console.log("hello");
+// interface User {
+//   [grade: number]: Score;
+// }
+
+// let user: User = {
+//   1: "A",
+//   2: "B",
+// };
+
+interface Add {
+  // (인자값, 리턴 값) : 반환 값
+  (num1: number, num2: number): number;
 }
 
-function showError() {
-  throw new Error();
+const add: Add = function (x, y) {
+  return x + y;
+};
+
+add(10, 20); // 30
+
+interface IsAdult {
+  (age: number): boolean;
 }
 
-function infLoop() {
-  while (true) {
-    // do something..
-  }
-}
-
-//enum
-
-enum Os {
-  Window = "win",
-  Ios = "ios",
-  Android = "and",
-}
-
-console.log(Os[1]); // "Ios"
+const a: IsAdult = (age) => {
+  return age > 19;
+};
