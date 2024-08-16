@@ -1,48 +1,32 @@
-// implements
+// function add(num1: number, num2: number): void {
+//   console.log(num1 + num2);
+// }
 
-interface Car {
-  color: string;
-  wheels: number;
-  start(): void;
-}
+// function hello(name: string, age?: number): string {
+//   if (age !== undefined) return `Hello, ${name}. You are ${age}`;
+//   else return `Hello, ${name}`;
+// }
 
-interface Toy {
+// const result = hello(); // "Hello, world"
+// const result2 = hello("Sam"); // "Hello, Sam"
+
+// function add(...nums: number[]) {
+//   return nums.reduce((result, num) => result + num, 0);
+// }
+
+// add(1, 2, 3); //6
+
+interface User {
   name: string;
 }
 
-interface ToyCar extends Car, Toy {
-  price: number;
+const Sam: User = { name: "Sam" };
+
+function showName(this: User, age: number, gender: "m" | "f") {
+  console.log(this.name, age, gender);
 }
 
-// interface Benz extends Car {
-//   door: number;
-//   stop(): void;
-// }
+const a = showName.bind(Sam);
 
-// const benz: Benz = {
-//   door: 5,
-//   stop() {
-//     console.log("stop");
-//   },
-//   color: "black",
-//   wheels: 4,
-//   start() {
-//     console.log("start...");
-//   },
-// };
-
-class Bmw implements Car {
-  color;
-  constructor(c: string) {
-    this.color = c;
-  }
-  wheels: 4;
-  start(): void {
-    console.log("go...");
-  }
-}
-
-const b = new Bmw("green");
-
-console.log(b);
-console.log(b.start());
+// 여기서 전달한 매개변수는 this 다음 부터 적용됨
+a(30, "m");
