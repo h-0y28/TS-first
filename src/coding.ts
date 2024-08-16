@@ -1,32 +1,21 @@
-// function add(num1: number, num2: number): void {
-//   console.log(num1 + num2);
-// }
-
-// function hello(name: string, age?: number): string {
-//   if (age !== undefined) return `Hello, ${name}. You are ${age}`;
-//   else return `Hello, ${name}`;
-// }
-
-// const result = hello(); // "Hello, world"
-// const result2 = hello("Sam"); // "Hello, Sam"
-
-// function add(...nums: number[]) {
-//   return nums.reduce((result, num) => result + num, 0);
-// }
-
-// add(1, 2, 3); //6
-
 interface User {
   name: string;
+  age: number;
 }
 
-const Sam: User = { name: "Sam" };
+function join(name: string, age: string): string;
+function join(name: string, age: number): User;
 
-function showName(this: User, age: number, gender: "m" | "f") {
-  console.log(this.name, age, gender);
+function join(name: string, age: number | string): User | string {
+  if (typeof age === "number") {
+    return {
+      name,
+      age,
+    };
+  } else {
+    return "나이는 숫자로 입력해주세요.";
+  }
 }
 
-const a = showName.bind(Sam);
-
-// 여기서 전달한 매개변수는 this 다음 부터 적용됨
-a(30, "m");
+const sam: User = join("Sam", 30);
+const jane: string = join("Jane", "30");
