@@ -111,3 +111,62 @@ const a = showName.bind(Sam);
 // 여기서 전달한 매개변수는 this 다음 부터 적용됨
 a(30, "m");
 ```
+
+---
+
+## 오버로드
+
+- 전달 받은 **매개변수의 갯수나 타입**에 따라 **다른 동작**을 하게 하는 것
+- 매개변수의 타입이나 개수에 따라 **다른 방식**으로 동작 해야 될 때
+- 함수 위에 똑같은 모습으로 작성
+
+잘못된 방식
+
+```
+interface User {
+  name: string;
+  age: number;
+}
+
+function join(name: string, age: number | string): User | string {
+  if (typeof age === "number") {
+    return {
+      name,
+      age,
+    };
+  } else {
+    return "나이는 숫자로 입력해주세요.";
+  }
+}
+
+// error
+const sam: User = join("Sam", 30);
+const jane: User = join("Jane", "30");
+```
+
+오버로드 사용
+
+```
+interface User {
+  name: string;
+  age: number;
+}
+
+// 함수 위에 똑같은 모습으로 작성
+function join(name: string, age: string): string;
+function join(name: string, age: number): User;
+
+function join(name: string, age: number | string): User | string {
+  if (typeof age === "number") {
+    return {
+      name,
+      age,
+    };
+  } else {
+    return "나이는 숫자로 입력해주세요.";
+  }
+}
+
+const sam: User = join("Sam", 30);
+const jane: string = join("Jane", "30");
+```
