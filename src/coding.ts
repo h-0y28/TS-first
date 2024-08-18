@@ -1,28 +1,22 @@
-// 접근 제한자 (Access modifier) - public, private, protect
-class Car {
-  readonly name: string = "car";
+// 추상 class
+abstract class Car {
   color: string;
-  static wheels = 4;
-  constructor(color: string, name) {
-    this.color = color;
-    this.name = name;
+  constructor(color: string) {
+    this.color;
   }
   start() {
     console.log("start");
-    console.log(this.name);
-    console.log(Car.wheels);
   }
+  abstract doSomething(): void;
 }
 
 class Bmw extends Car {
-  constructor(color: string, name) {
-    super(color, name);
+  constructor(color: string) {
+    super(color);
   }
-  showName() {
-    console.log(super.name);
+  doSomething(): void {
+    alert(3);
   }
 }
 
-const z4 = new Bmw("black", "zzzz4");
-console.log(Car.wheels);
-// z4.name = "zzzz4";
+const z4 = new Bmw("black");
