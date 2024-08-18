@@ -1,19 +1,28 @@
-// Intersection Types
-
-interface Car {
-  name: string;
-  start(): void;
-}
-
-interface Toy {
-  name: string;
+// 접근 제한자 (Access modifier) - public, private, protect
+class Car {
+  readonly name: string = "car";
   color: string;
-  price: number;
+  static wheels = 4;
+  constructor(color: string, name) {
+    this.color = color;
+    this.name = name;
+  }
+  start() {
+    console.log("start");
+    console.log(this.name);
+    console.log(Car.wheels);
+  }
 }
 
-const toyCar: Toy & Car = {
-  name: "타요",
-  start() {},
-  color: "blue",
-  price: 1000,
-};
+class Bmw extends Car {
+  constructor(color: string, name) {
+    super(color, name);
+  }
+  showName() {
+    console.log(super.name);
+  }
+}
+
+const z4 = new Bmw("black", "zzzz4");
+console.log(Car.wheels);
+// z4.name = "zzzz4";
