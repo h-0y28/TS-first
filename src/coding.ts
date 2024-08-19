@@ -1,14 +1,15 @@
-// Reauied
+// ReadOnly
 
 interface User {
   id: number;
   name: string;
-  age: number;
-  gender: "m" | "f";
+  age?: number;
 }
 
-//error
-let admin: Required<User> = {
+let admin: Readonly<User> = {
   id: 1,
   name: "Bob",
 };
+
+//error
+admin.id = 4;
