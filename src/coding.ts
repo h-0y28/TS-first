@@ -1,5 +1,4 @@
-// Partial<T>
-// property를 모두 옵션으로 바꿔줌 => 일부만 사용하는 것이 강함
+// Reauied
 
 interface User {
   id: number;
@@ -8,7 +7,8 @@ interface User {
   gender: "m" | "f";
 }
 
-let admin: Partial<User> = {
+//error
+let admin: Required<User> = {
   id: 1,
   name: "Bob",
 };
