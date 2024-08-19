@@ -1,27 +1,15 @@
+// keyof
+
 interface User {
+  id: number;
   name: string;
   age: number;
+  gender: "m" | "f";
 }
 
-interface Car {
-  name: string;
-  color: string;
-}
+// keyof key : interface의 key값들을 union 형태로 바꿀 수 있다
+type UserKey = keyof User; // "id" | "name" | "age" | "gender"
 
-interface Book {
-  price: number;
-}
-
-const user: User = { name: "a", age: 10 };
-const car: Car = { name: "bmw", color: "red" };
-const book: Book = { price: 3000 };
-
-function showName<T extends { name: string }>(data: T): string {
-  return data.name;
-}
-
-showName(user);
-showName(car);
-
-// error
-// showName(book);
+const uk: UserKey = "id";
+// interface의 key 값 이외의 값 => error
+const uk2: UserKey = "";
