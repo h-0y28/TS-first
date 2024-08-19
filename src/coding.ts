@@ -1,23 +1,22 @@
-// generic
-// 클래스나 함수 인터페이스를 다양하게 사용 가능
+// interface에서 사용
 
-// 다양한 타입의 배열을 넘겨줬을 때 너무 길어짐
-function getSize<T>(arr: T[]): number {
-  return arr.length;
+interface Mobile<T> {
+  name: string;
+  price: number;
+  option: T;
 }
+// Mobile<color: string; coupon: boolean}>
+const m1: Mobile<object> = {
+  name: "s21",
+  price: 1000,
+  option: {
+    color: "red",
+    coupon: false,
+  },
+};
 
-const arr1 = [1, 2, 3];
-// 타입 작성
-getSize<number>(arr1);
-
-const arr2 = ["a", "b", "c"];
-// 타입 작성
-getSize<string>(arr2);
-
-const arr3 = [false, true, false];
-// <boolean> 생략 가능
-getSize(arr3);
-
-const arr4 = [{}, {}, { name: "Time" }];
-// 여기도 생략
-getSize<object>(arr4);
+const m2: Mobile<string> = {
+  name: "s20",
+  price: 900,
+  option: "good",
+};
