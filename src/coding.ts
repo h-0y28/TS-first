@@ -1,4 +1,5 @@
-// keyof
+// Partial<T>
+// property를 모두 옵션으로 바꿔줌 => 일부만 사용하는 것이 강함
 
 interface User {
   id: number;
@@ -7,9 +8,7 @@ interface User {
   gender: "m" | "f";
 }
 
-// keyof key : interface의 key값들을 union 형태로 바꿀 수 있다
-type UserKey = keyof User; // "id" | "name" | "age" | "gender"
-
-const uk: UserKey = "id";
-// interface의 key 값 이외의 값 => error
-const uk2: UserKey = "";
+let admin: Partial<User> = {
+  id: 1,
+  name: "Bob",
+};
