@@ -1,4 +1,4 @@
-// Exclude<T1,T2>
+// NonNullable<Type>
 
-type T1 = string | number | boolean;
-type T2 = Exclude<T1, number | boolean>; // type t2 = string
+type T1 = string | null | undefined | void;
+type T2 = NonNullable<T1>;
