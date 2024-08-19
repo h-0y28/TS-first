@@ -1,27 +1,4 @@
-// // Pick<T,K>
+// Exclude<T1,T2>
 
-// interface User {
-//   id: number;
-//   name: string;
-//   age: number;
-//   gender: "M" | "F";
-// }
-
-// const admin: Pick<User, "id"|"name"> = {
-//   id : 0 ,
-//   name: "Bob"
-// }
-
-// Admit<T,K>
-
-interface User {
-  id: number;
-  name: string;
-  age: number;
-  gender: "M" | "F";
-}
-
-const admin: Omit<User, "age" | "gender"> = {
-  id: 0,
-  name: "Bob",
-};
+type T1 = string | number | boolean;
+type T2 = Exclude<T1, number | boolean>; // type t2 = string
