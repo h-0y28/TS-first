@@ -1,22 +1,27 @@
-// interface에서 사용
-
-interface Mobile<T> {
+interface User {
   name: string;
-  price: number;
-  option: T;
+  age: number;
 }
-// Mobile<color: string; coupon: boolean}>
-const m1: Mobile<object> = {
-  name: "s21",
-  price: 1000,
-  option: {
-    color: "red",
-    coupon: false,
-  },
-};
 
-const m2: Mobile<string> = {
-  name: "s20",
-  price: 900,
-  option: "good",
-};
+interface Car {
+  name: string;
+  color: string;
+}
+
+interface Book {
+  price: number;
+}
+
+const user: User = { name: "a", age: 10 };
+const car: Car = { name: "bmw", color: "red" };
+const book: Book = { price: 3000 };
+
+function showName<T extends { name: string }>(data: T): string {
+  return data.name;
+}
+
+showName(user);
+showName(car);
+
+// error
+// showName(book);
