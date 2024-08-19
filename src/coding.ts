@@ -1,34 +1,27 @@
-// Record<K,T>
-// K = key
-// T = type
+// // Pick<T,K>
 
-// interface Score  {
-//   "1": "A"|"B"|"C"|"D";
-//   "2": "A"|"B"|"C"|"D";
-//   "3": "A"|"B"|"C"|"D";
-//   "4": "A"|"B"|"C"|"D";
+// interface User {
+//   id: number;
+//   name: string;
+//   age: number;
+//   gender: "M" | "F";
 // }
 
-// type Grade = "1" | "2" | "3" | "4";
-// type Score = "A" | "B" | "C" | "D" | "F";
-// const score: Record<Grade, Score> = {
-//   1: "A",
-//   2: "B",
-//   3: "C",
-//   4: "D",
-// };
+// const admin: Pick<User, "id"|"name"> = {
+//   id : 0 ,
+//   name: "Bob"
+// }
+
+// Admit<T,K>
 
 interface User {
   id: number;
   name: string;
   age: number;
+  gender: "M" | "F";
 }
 
-function isVaild(user: User) {
-  const result: Record<keyof User, boolean> = {
-    id: user.id > 0,
-    name: user.name !== "",
-    age: user.age > 0,
-  };
-  return result;
-}
+const admin: Omit<User, "age" | "gender"> = {
+  id: 0,
+  name: "Bob",
+};
