@@ -1,11 +1,22 @@
-type SuperPrint = (a: any[]) => any;
+type Player<E> = {
+  name: string;
+  extraInfo: E;
+};
 
-const superPrint: SuperPrint = (arr) => arr[0];
+type NicoExtra = {
+  favFood: string;
+};
 
-const a = superPrint([1, 2, 3, 4]); // a: any
-const b = superPrint([true, false, true]); // b: any
-const c = superPrint(["1", "2", "3"]); // c: any
-const d = superPrint([1, false, true, 4, "hello"]); // d: any
+type NicoPlayer = Player<NicoExtra>;
 
-// 보로를 받지 못 함 -> 배열의 첫번째 요소를 리턴해줌 = number
-d.toUpperCase();
+const nico: NicoPlayer = {
+  name: "nico",
+  extraInfo: {
+    favFood: "kimchi",
+  },
+};
+
+const lynn: Player<null> = {
+  name: "lynn",
+  extraInfo: null,
+};
