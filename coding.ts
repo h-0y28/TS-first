@@ -1,33 +1,11 @@
-type Config = {
-  path: string;
-  state: object;
+type SuperPrint = {
+  // return type도 T로 지정
+  <TypePlaceholder>(arr: TypePlaceholder[]): TypePlaceholder;
 };
 
-type Push = {
-  (path: string): void;
-  (config: Config): void;
-};
+const superPrint: SuperPrint = (arr) => arr[0];
 
-const push: Push = (config) => {
-  if (typeof config === "string") {
-    console.log(config);
-  } else {
-    console.log(config.path);
-  }
-};
-
-//
-
-type Add = {
-  (a: number, b: number): number;
-  (a: number, b: number, c: number): number;
-};
-
-// 실제 함수 구현부에서 optional인지 정의함
-const add: Add = (a, b, c?: number) => {
-  if (c) return a + b + c;
-  return a + b;
-};
-
-add(1, 2);
-add(1, 2, 3);
+const a = superPrint([1, 2, 3, 4]);
+const b = superPrint([true, false, true]);
+const c = superPrint(["1", "2", "3"]); // c: string
+const d = superPrint([1, false, true, 4, "hello"]); // d: string | number | boolean
