@@ -1,10 +1,8 @@
-type Player = {
-  name: string;
-  age?: number;
-};
+let a: unknown;
 
-function PlayerMaker(name: string) {
-  return {
-    name,
-  };
+if (typeof a === "number") {
+  let b = a + 1;
+}
+if (typeof a === "string") {
+  let b = a.toUpperCase;
 }
