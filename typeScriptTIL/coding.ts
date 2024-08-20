@@ -1,4 +1,10 @@
-// NonNullable<Type>
+type Player = {
+  name: string;
+  age?: number;
+};
 
-type T1 = string | null | undefined | void;
-type T2 = NonNullable<T1>;
+function PlayerMaker(name: string) {
+  return {
+    name,
+  };
+}
