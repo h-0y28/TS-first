@@ -5,9 +5,13 @@ interface User {
   fullName(): string;
 }
 
-class Player implements User {
+interface Health{
+  health: number
+}
+
+class Player implements User, Health {
   // 무조건 public
-  constructor(public firstName: string, public lastName: string) {}
+  constructor(public firstName: string, public lastName: string, public health: number) {}
   fullName(): string {
     return `${this.firstName}${this.lastName}`;
   }
