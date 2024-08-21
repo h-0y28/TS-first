@@ -15,10 +15,13 @@ class Dict {
   def(term: string) {
     return this.words[term];
   }
+  static hello() {
+    return "hello";
+  }
 }
 
 class Word {
-  constructor(public term: string, public def: string) {}
+  constructor(public readonly term: string, public readonly def: string) {}
 }
 
 const kimchi = new Word("kinchi", "한국의 음식");
