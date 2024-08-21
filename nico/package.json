@@ -1,0 +1,14 @@
+{
+  "name": "nico",
+  "version": "1.0.0",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
