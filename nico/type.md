@@ -94,3 +94,39 @@ function hello2(name: string | number) {
   }
 }
 ```
+
+---
+
+이전까지는 string과 같은 concrete 타입을 써야 했음
+but, 아래와 같이 xonxrete타입의 **특정 값**을 쓸 수 있음
+
+```
+// 여기 !!!!
+type Team = "red" | "blue" | "yellow";
+
+type Player = {
+  nickname: string;
+  team: Team;
+};
+```
+
+좀 더 많은 내용이 담긴 코드
+
+```
+type Team = "red" | "blue" | "yellow";
+type Health = 1 | 5 | 10;
+
+type Player = {
+  nickname: string;
+  team: Team;
+  health: Health;
+};
+
+const nico: Player = {
+  nickname: "nico",
+
+  // 정해진 것 이외의 값을 넣으면 오류
+  team: "blue",
+  health: 5,
+};
+```

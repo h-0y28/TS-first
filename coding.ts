@@ -1,20 +1,15 @@
-type Team = "red" | "blue" | "yellow";
-type Health = 1 | 5 | 10;
-
-interface Player {
-  nickname: string;
-  team: Team;
-  health: Health;
+interface User {
+  name: string;
+}
+interface User {
+  lastName: string;
+}
+interface User {
+  health: number;
 }
 
-type Player = {
-  nickname: string;
-  team: Team;
-  health: Health;
-};
-
-const nico: Player = {
-  nickname: "nico",
-  team: "blue",
-  health: 5,
+const nico: User = {
+  name: "nco",
+  lastName: "n",
+  health: 10,
 };
