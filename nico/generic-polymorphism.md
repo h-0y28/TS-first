@@ -1,3 +1,5 @@
+## 앞서서
+
 #### poly?
 
 다수
@@ -9,6 +11,29 @@
 #### polymorphous
 
 여러가지 다른 구조들(모양들)
+
+#### 제네릭 타입 vs 리터럴 표기법
+
+> 제네릭 타입
+
+```
+type Friends = Array<string>
+```
+
+- 배열 외의 제네릭 타입을 사용하는 경우 일관성을 유지하기 위해 선호될 수 있음
+- 제네릭 타입을 자주 사용하는 코드베이스에서는 제네릭 표기법을 사용해 **일관성**을 유지할 수 있음
+
+> 리터럴 표기법
+
+```
+type Friends = string[]
+```
+
+- 더 간결하고 읽기 쉽기 때문에, 많은 개발자들이 이 방식을 선호
+- 간단한 배열 타입을 정의할 때 더 직관적일 수 있음
+
+둘다 동일한 의미 (= 문자열의 배열)
+**실질적인 차이는 없음**
 
 ---
 
@@ -24,10 +49,12 @@
 
 `` 안에 있는 것은 개발자가 지정
 
-```
+````
+
 type `typeName` = {
-  <`T`>(`type`: `T`[]): `returnType`;
+<`T`>(`type`: `T`[]): `returnType`;
 };
+
 ```
 
 **적용**
@@ -35,38 +62,42 @@ type `typeName` = {
 > 기존코드
 
 ```
+
 type SuperPrint = {
-  (arr: number[]): void;
-  (arr: boolean[]): void;
-  (arr: string[]): void;
-  (arr: (number | boolean)[]): void;
+(arr: number[]): void;
+(arr: boolean[]): void;
+(arr: string[]): void;
+(arr: (number | boolean)[]): void;
 };
 
 const superPrint: SuperPrint = (arr) => {
-  arr.forEach((i) => console.log(i));
+arr.forEach((i) => console.log(i));
 };
 
 superPrint([1, 2, 3, 4]);
 superPrint([true, false, true]);
 superPrint(["1", "2", "3"]);
 superPrint([1, false, true, 4]);
+
 ```
 
 > Generic 사용
 
 ```
+
 type SuperPrint = {
-  <TypePlaceholder>(arr: TypePlaceholder[]): void;
+<TypePlaceholder>(arr: TypePlaceholder[]): void;
 };
 
 const superPrint: SuperPrint = (arr) => {
-  arr.forEach((i) => console.log(i));
+arr.forEach((i) => console.log(i));
 };
 
 superPrint([1, 2, 3, 4]);
 superPrint([true, false, true]);
 superPrint(["1", "2", "3"]);
 superPrint([1, false, true, 4]);
+
 ```
 
 ---
@@ -78,6 +109,7 @@ superPrint([1, false, true, 4]);
 > 기존 코드
 
 ```
+
 type SuperPrint = <T>(a: T[]) => T
 const superPrint: SuperPrint = (arr) => arr[0];
 
@@ -91,6 +123,7 @@ const d = superPrint([1, false, true, 4, "hello"]);
 > any를 사용한 코드 - 보호를 받지 못 함
 
 ```
+
 type SuperPrint = (a: any[]) => any;
 
 const superPrint: SuperPrint = (arr) => arr[0];
@@ -103,6 +136,7 @@ const d = superPrint([1, false, true, 4, "hello"]); // d: any
 // generic을 사용해도 허용하지 않음 / error를 띄움으로써 런타임 과정중에ㅔ 에러가 나지 않도록 막아줌
 // 보로를 받지 못 함 -> 배열의 첫번째 요소를 리턴해줌 = number
 d.toUpperCase();
+
 ```
 
 ---
@@ -110,6 +144,7 @@ d.toUpperCase();
 ### 2개 이상의 Generic
 
 ```
+
 type SuperPrint = <T, V>(a: T[], b: V) => T;
 
 const superPrint: SuperPrint = (arr) => arr[0];
@@ -118,40 +153,45 @@ const a = superPrint([1, 2, 3, 4], "x");
 const b = superPrint([true, false, true], 1);
 const c = superPrint(["1", "2", "3"], false);
 const d = superPrint([1, false, true, 4, "hello"], []);
+
 ```
 
 ---
 
 ```
+
 type Player<E> = {
-  name: string;
-  extraInfo: E;
+name: string;
+extraInfo: E;
 };
 
 const nico: Player<{ favFood: string }> = {
-  name: "nico",
-  extraInfo: {
-    favFood: "kimchi",
-  },
+name: "nico",
+extraInfo: {
+favFood: "kimchi",
+},
 };
+
 ```
 
 위 아래 같은 의미를 가짐
 
 ```
+
 type Player<E> = {
-  name: string;
-  extraInfo: E;
+name: string;
+extraInfo: E;
 };
 
 type NicoPlayer = Player<{ favFood: string }>;
 
 const nico: NicoPlayer = {
-  name: "nico",
-  extraInfo: {
-    favFood: "kimchi",
-  },
+name: "nico",
+extraInfo: {
+favFood: "kimchi",
+},
 };
+
 ```
 
 ---
@@ -159,26 +199,31 @@ const nico: NicoPlayer = {
 ### Generic의 재사용
 
 ```
+
 type Player<E> = {
-  name: string;
-  extraInfo: E;
+name: string;
+extraInfo: E;
 };
 
 type NicoExtra = {
-  favFood: string;
+favFood: string;
 };
 
 type NicoPlayer = Player<NicoExtra>;
 
 const nico: NicoPlayer = {
-  name: "nico",
-  extraInfo: {
-    favFood: "kimchi",
-  },
+name: "nico",
+extraInfo: {
+favFood: "kimchi",
+},
 };
 
 const lynn: Player<null> = {
-  name: "lynn",
-  extraInfo: null,
+name: "lynn",
+extraInfo: null,
 };
+
 ```
+
+```
+````
