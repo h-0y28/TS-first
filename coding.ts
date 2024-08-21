@@ -1,15 +1,14 @@
-interface User {
-  name: string;
-}
-interface User {
-  lastName: string;
-}
-interface User {
-  health: number;
+abstract class User {
+  constructor(protected firstName: string, protected lastName: string) {}
+  abstract sayHi(name: string): string;
+  abstract fullName(): string;
 }
 
-const nico: User = {
-  name: "nco",
-  lastName: "n",
-  health: 10,
-};
+class Player extends User {
+  fullName(): string {
+    return `${this.firstName}${this.lastName}`;
+  }
+  sayHi(name: string): string {
+    return `Hello ${name}. My name is ${this.fullName}`;
+  }
+}
