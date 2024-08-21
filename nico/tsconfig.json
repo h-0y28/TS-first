@@ -1,0 +1,13 @@
+{
+  // include : js로 컴파일하고 싶은 모든 디렉터리응 넣는 곳
+  // src : 모든 파일을 확인한다는 것
+  "include": ["src"],
+  "compilerOptions": {
+    // outDir : js 파일이 생성될 디렉터리 - build라는 폴더에 만들어진 코드를 넣을 것 이라고 알림
+    // package.json으로 가서 스크립티에 build라는 새 스크립트 만들어주기
+    // package.json -> "build": "tsc" -> npm run build 입력하면 tsc작동함
+    "outDir": "build",
+    // target: 어떤 버전의 js로 ts를 컴파일 하고 싶은지
+    "target": "ES6"
+  }
+}
