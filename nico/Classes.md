@@ -68,4 +68,15 @@ const nico = new User("nico", "las", "니꼬");
 
 ### 추상 메소드
 
-추상 클래스를 상속 받는 모든 것들이 구현을 해야하는 메소드
+추상 클래스를 **상속 받은 모든 것**이 구현을 해야하는 메소드
+
+```
+// 추상 클래스
+abstract class User {
+  // 생성자
+  constructor(protected firstName: string, protected lastName: string) {}
+  // 추상 메소드 !!!!!!
+  abstract sayHi(name: string): string;
+  abstract fullName(): string;
+}
+```
