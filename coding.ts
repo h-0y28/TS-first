@@ -1,20 +1,29 @@
-abstract class User {
-  constructor(
-    protected firstName: string,
-    protected lastName: string,
-    protected nickName: string
-  ) {}
-  abstract getNickName(): void;
+type Words = {
+  [key: string]: string;
+};
 
-  private getFullName() {
-    return `${this.firstName} ${this.lastName}`;
+class Dict {
+  private words: Words;
+  constructor() {
+    this.words = {};
+  }
+  add(word: Word) {
+    if (this.words[word.term] === undefined) {
+      this.words[word.term] = word.def;
+    }
+  }
+  def(term: string) {
+    return this.words[term];
   }
 }
 
-class Player extends User {
-  getNickName() {
-    console.log(this.nickName);
-  }
+class Word {
+  constructor(public term: string, public def: string) {}
 }
 
-const nico = new Player("nico", "las", "니꼬");
+const kimchi = new Word("kinchi", "한국의 음식");
+
+const dict = new Dict();
+
+dict.add(kimchi);
+dict.def("kimchi");
