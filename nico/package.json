@@ -2,13 +2,20 @@
   "name": "nico",
   "version": "1.0.0",
   "devDependencies": {
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "nodemon": "^3.1.4",
+    "undici": "^6.19.8"
+  }
 }
